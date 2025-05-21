@@ -36,20 +36,14 @@ recognition.onresult = (event) => {
   }
 
   // Send HTTP GET request to ESP8266
-  fetch(path)
-    .then(response => response.text())
-    .then(data => {
-      log.innerText = data;
-      if (path === "/on") {
-        speak("Fan is on");
-      } else if (path === "/off") {
-        speak("Fan is off");
-      }
-    })
-    .catch(error => {
-      console.error(error);
-      status.innerText = "Error sending command.";
-    });
+ fetch('http://192.168.1.100/fan/on')  // Change this to your ESP32 IP
+  .then(response => response.text())
+  .then(data => {
+    console.log('Fan turned on:', data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
 };
 
 function speak(text) {
