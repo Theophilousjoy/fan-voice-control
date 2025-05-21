@@ -36,7 +36,7 @@ recognition.onresult = (event) => {
   }
 
   // Send HTTP GET request to ESP8266
- fetch('http://192.168.1.100/fan/on')  // Change this to your ESP32 IP
+ fetch('http://192.168.35.121/fan/on')  // Change this to your ESP32 IP
   .then(response => response.text())
   .then(data => {
     console.log('Fan turned on:', data);
